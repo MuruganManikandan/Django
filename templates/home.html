@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <title>Home</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <style>
+          body {
+              background-color: black;
+              color: white;
+          }
+      </style>
+    </head>
+    <body>
+        <!-- Navbar header -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
+        <div class="container">
+          <!--logo-->
+          <a class="navbar-brand fs-4" href="#">welcome</a>
+          <!--Taggle Btn-->
+          <button class="navbar-toggler shadow-none border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <!--sidebar-->
+          <div class="sidebar offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <!--sidebar header-->
+            <div class="offcanvas-header text-white border-bottom">
+              <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
+              <button type="button" class="btn-close btn-close-white shadow-none" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <!--sidebar body-->
+            <div class="offcanvas-body d-flex flex-column flex-lg-row p-4 p-lg-0">
+              <ul class="navbar-nav justify-content-center align-items-center fs-5 flex-grow-1 pe-3">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="{% url 'Home' %}">About</a>
+                </li>
+                <!---
+                <li class="nav-item mx-2">
+                  <a class="nav-link" href="#">exdt</a>
+                </li>
+                -->
+                <li class="nav-item mx-2">
+                    <a class="nav-link" href="{% url 'Project' %}">Project</a>
+                  </li>
+                <li class="nav-item mx-2">
+                    <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+                  </li>
+              </ul>
+              <!-- login/sign up-->
+              <div class="d-flex flex-column flex-lg-row justify-content-center align-items-center gap-3">
+              {% if user.is_authenticated %}
+                <a href="{% url 'Logout' %}" class="text-white">Logout</a>
+              {% else %}  
+                <a href="{% url 'Login' %}" class="text-white">Login</a>
+                <a href="{% url 'Signuppage' %}" class="text-white text-decoration-none px-3 py-1 rounded-4" style="background-color: blue;">Sign Up</a>
+              {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <!--------about-------->
+      <div id="about">
+        <div class="container">
+          <div class="row">
+            <div class="about-col-1">
+              <img src="{% static 'image/IMG_197snap.jpeg' %}">
+            </div>
+            <div class="about-col-2">
+              <h1 class="header-text">Hi.., I'm <span>Murugan</span></h1>
+              <h1 class="sub-title"> About me </h1>
+              <p>I build AI that help your business grow and reduse your time</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!------footer for social media---->
+      <div id="contect">
+        <div class="container">
+          <div class="row">
+            <div class="contact-left">
+              <h1 class="sub-title">contact</h1>
+              <p><i class="fa fa-envelope"></i> murugan05577@gmail.com</p>
+              <p><i class="fa fa-mobile"></i> +91 637942xxxx</p>
+            </div>
+            <div class="contact-right">
+              <div class="social-icons">
+              <a href="https://www.linkedin.com/in/murugan-m-4470a71b7"><i class="fa fa-linkedin"></i></a>
+              <a href="https://www.instagram.com/murugan28632?r=nametag"><i class="fa fa-instagram"></i></a>
+              <a href="https://www.facebook.com/profile.php?id=100028434935847&mibextid=ZbWKwL"><i class="fa fa-facebook"></i></a>
+              <a href="https://github.com/MuruganManikandan/MuruganManikandan.git"><i class="fa fa-github"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </body>
+</html>

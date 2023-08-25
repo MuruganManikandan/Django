@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <title>Sign Up</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <script src="{% static 'jquery/jquery.min.js' %}"></script>
+        <style>
+          body {
+              background-color: rgb(0, 0, 0);
+              color: white;
+          }
+      </style>
+    </head>
+    <body>
+        <!-- Navbar header -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
+        <div class="container">
+          <!--logo-->
+          <a class="navbar-brand fs-4" href="#"></a>
+          <!--Taggle Btn-->
+          <button class="navbar-toggler shadow-none border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <!--sidebar-->
+          <div class="sidebar offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <!--sidebar header-->
+            <div class="offcanvas-header text-white border-bottom">
+              <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
+              <button type="button" class="btn-close btn-close-white shadow-none" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <!--sidebar body-->
+            <div class="offcanvas-body d-flex flex-column flex-lg-row p-4 p-lg-0">
+              <ul class="navbar-nav justify-content-center align-items-center fs-5 flex-grow-1 pe-3">
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'Home' %}">About</a>
+                </li>
+                <!------
+                <li class="nav-item mx-2">
+                  <a class="nav-link" href="#about">About</a>
+                </li>
+                --->
+                <li class="nav-item mx-2">
+                    <a class="nav-link" href="{% url 'Project' %}">Project</a>
+                  </li>
+                <li class="nav-item mx-2">
+                    <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+                  </li>
+              </ul>
+              <!-- login/sign up-->
+              <div class="d-flex flex-column flex-lg-row justify-content-center align-items-center gap-3">
+                <a href="{% url 'Login' %}" class="text-white">Login</a>
+                <a href="{% url 'Signuppage' %}" class="text-white text-decoration-none px-3 py-1 rounded-4" style="background-color: rgb(17, 0, 255);">Sign Up</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <!---loginpage form--->
+      <div class="box">
+        <form method="POST" autocomplete="off">
+          {% if messages %}
+                 {% for message in messages %}
+                     <div class="alert alert-{{ message.tags }}">
+                           {{message}}
+                      </div>
+                  {% endfor %}   
+          {% endif %}
+          {% csrf_token %}
+            <h2>Sign Up</h2>
+            <div class="inputbox">
+                <input type="text" required="required" name="username">
+                <span>Username</span>
+                <i></i>
+            </div>
+            <div class="inputbox">
+              <input type="email" required="required" name="email">
+              <span>Email Id</span>
+              <i></i>
+          </div>
+            <div class="inputbox">
+                <input type="password" required="required" name="password1">
+                <span>Set Password</span>
+                <i></i>
+            </div>
+            <div class="inputbox">
+                <input type="passward" required="required" name="password2">
+                <span>Cunform Password</span>
+                <i></i>
+            </div>
+            <div class="links">
+              <!---<a href="#">Forgot Passward</a>
+            -->  
+                <a href="{% url 'Login' %}">Login</a>
+            </div>
+            <input type="submit" value="Signup">
+        </form>
+      </div>
+    </body>
+</html>
+<script>
+  $(document).ready(function(){
+      $(".alert").hide(4000);
+  });
+</script>
